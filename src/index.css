@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 14.3% 95.9%;
+    --foreground: 224 71.4% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 220 14.3% 90%;
+    --secondary-foreground: 220.9 39.3% 11%;
+
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+
+    --accent: 262.1 83.3% 95%;
+    --accent-foreground: 262.1 83.3% 40%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 220 14.3% 90%;
+    --input: 220 14.3% 90%;
+    --ring: 262.1 83.3% 57.8%;
+
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+
+    --card: 224 71.4% 6%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 224 71.4% 6%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 263.4 70% 50.4%;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism utilities */
+  .glass-card {
+    @apply bg-white/70 dark:bg-[#0c0d12]/70 backdrop-blur-md border border-white/20 dark:border-white/5 shadow-glass-light dark:shadow-glass-dark;
+  }
+
+  .glass-card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:scale-[1.01] hover:-translate-y-0.5;
+  }
+
+  .glass-panel {
+    @apply bg-white/40 dark:bg-white/[0.02] backdrop-blur-md border border-white/20 dark:border-white/5;
+  }
+
+  /* Glares and Glows */
+  .glow-purple {
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  }
+
+  .glow-blue {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+  }
+
+  .glow-indigo {
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  }
+
+  /* Custom animated grid background */
+  .grid-bg {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
+  }
+
+  /* Hide default scrollbars */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Premium Webkit scrollbar override */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.2);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.4);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Base custom styles */
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Loading animations */
+@keyframes shiver {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.animate-shiver {
+  animation: shiver 2s ease-in-out infinite;
+}
+
+/* Typing animation cursor */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* PDF layout helpers */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-page-break {
+    page-break-after: always;
+  }
+}
